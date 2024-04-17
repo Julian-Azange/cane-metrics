@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <!-- Tarjeta de la calculadora de siembra -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Calculadora de Siembra</h2>
+
+                    <!-- Formulario para ingresar datos de siembra -->
+                    <div class="form-group">
+                        <label for="variedad">Variedad:</label>
+                        <input type="text" id="variedad" class="form-control" [(ngModel)]="siembra.variedad" placeholder="Variedad" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="densidadSiembra">Densidad de Siembra (plantas por m²):</label>
+                        <input type="number" id="densidadSiembra" class="form-control" [(ngModel)]="siembra.densidadSiembra" placeholder="Densidad" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="area">Área (m²):</label>
+                        <input type="number" id="area" class="form-control" [(ngModel)]="siembra.area" placeholder="Área" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fechaSiembra">Fecha de Siembra:</label>
+                        <input type="date" id="fechaSiembra" class="form-control" [(ngModel)]="siembra.fechaSiembra" />
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary" (click)="calcularSiembra()">Calcular</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mostrar los resultados calculados -->
+            <div *ngIf="reporteSiembra" class="mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Reporte de Siembra</h3>
+                        <p>Cantidad de fertilizante: {{ reporteSiembra.cantidadFertilizante }} kg</p>
+                        <p>Tiempo de producción: {{ reporteSiembra.tiempoProduccion }} meses</p>
+                        <p>Cantidad producida: {{ reporteSiembra.cantidadProducida }} toneladas</p>
+                        <p>Fecha de cosecha: {{ reporteSiembra.fechaCosecha | date }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="fertilizante" class="mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Fertilizante Necesario</h3>
+                        <p>Tipo: {{ fertilizante.tipo }}</p>
+                        <p>Cantidad: {{ fertilizante.cantidad }} kg</p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="produccion" class="mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Producción Estimada</h3>
+                        <p>Cantidad producida: {{ produccion.cantidadProducida }} toneladas</p>
+                        <p>Fecha de cosecha: {{ produccion.fechaCosecha | date }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
